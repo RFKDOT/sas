@@ -3,7 +3,7 @@ Secure-Admin-Server
 
 1.-
 El usuario accede a:
-http://?????.???/sas.php?usr=demo&pss=demo&acc=ApacheRestart
+http://?????.???/sas.php?usr=demo&pww=demo&ajob=ApacheRestart
 Entonces el Script PHP crea el fichero "ApacheRestart".
 
 2.- 
