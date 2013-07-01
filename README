@@ -1,1 +1,12 @@
 Secure-Admin-Server
+
+
+1.-
+El usuario accede a:
+http://?????.???/sas.php?usr=demo&pss=demo&acc=ApacheRestart
+Entonces el Script PHP crea el fichero "ApacheRestart".
+
+2.- 
+Se define en Crontab la ejecucion de sas.sh cada 6 minutos, por ejemplo.
+Cuando se ejecuta este script verifica si existe el fichero "ApacheRestart",
+si es asi realiza la tarea asiganada en este mismo script, en este caso "service apache2 restart"
