@@ -10,22 +10,22 @@ if(($_GET['usr'] === $usr) && (sha1($_GET['pww']) === $pww)){
 
         $tareas = array("NULL", "ApacheRestart", "PageSpeedRemoveCache");
 
-        $acc = arrayzator($_GET['acc'], $tareas);
+        $acc = arrayzator($_GET['job'], $tareas);
 
         if($acc==="NULL"){
 
-                $ret = "Error #2 (Tarea inexistente)";
+                $ret = "Error #2 (Job not found.)";
 
         }else{
 
                 fopen($dir.$acc,"w");
 
-                $ret = "Tarea (".$acc.") planificada correctamente.";
+                $ret = "Job (".$acc.") scheduled good.";
 
         }
 
 }else{
-        $ret = "Error #1 (Credenciales incorrectas)";
+        $ret = "Error #1 (Incorrect Login)";
 }
 
 echo $ret;
