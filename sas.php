@@ -2,40 +2,28 @@
 
 error_reporting(-1);
 
-$usr = "demo";
-$pww = "89e495e7941cf9e40e6980d14a16bf023ccd4c91"; //demo
-$dir = "/tmp/sas_secure_dir/";
+// /sas.php?usr={username}&pww={password}&job={task}
 
-if(($_GET['usr'] === $usr) && (sha1($_GET['pww']) === $pww)){
+    define('USERNAME', 'demo');
+    define('PASSWORD', '89e495e7941cf9e40e6980d14a16bf023ccd4c91'); // demo
+    define('PATH', '/tmp/sas_secure_dir');
 
-        $tareas = array("NULL", "ApacheRestart", "PageSpeedRemoveCache");
+    $tasks = array('ApacheRestart', 'PageSpeedRemoveCache');
 
-        $acc = arrayzator($_GET['job'], $tareas);
+    if (!isset($_GET['usr'], $_GET['pww'], $_GET['job']))
 
-        if($acc==="NULL"){
+        die('Error #1 (input).');
 
-                $ret = "Error #2 (Job not found.)";
+    if ($_GET['usr'] !== USERNAME || sha1($_GET['pww']) !== PASSWORD)
 
-        }else{
+        die('Error #2 (login).');
 
-                fopen($dir.$acc,"w");
+    if (!in_array($_GET['job'], $tasks))
 
-                $ret = "Job (".$acc.") scheduled good.";
+        die('Error #3 (job).');
 
-        }
+    file_put_contents(PATH . '/' . basename($_GET['job']), '');
 
-}else{
-        $ret = "Error #1 (Incorrect Login)";
-}
+    die('Job (' . htmlspecialchars($_GET['job']) . ') scheduled good.');
 
-echo $ret;
-
-
-function arrayzator($elem, $array)
-{
-    $dv = array_search($elem, $array);
-    ((!$dv)or(!$elem)) ? $dv=0 : '' ;
-
-    return $array[$dv];
-}
 ?>
