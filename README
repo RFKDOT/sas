@@ -10,3 +10,7 @@ Entonces el Script PHP crea el fichero "ApacheRestart".
 Se define en Crontab la ejecucion de sas.sh cada 6 minutos, por ejemplo.
 Cuando se ejecuta este script verifica si existe el fichero "ApacheRestart",
 si es asi realiza la tarea asiganada en este mismo script, en este caso "service apache2 restart"
+
+Ejemplo de configuracion Crontab 
+*/5 * * * * (/root/scripts/sas/sas.sh >> /root/scripts/sas/sas.log 2>> /root/scripts/sas/sas.log)
+
